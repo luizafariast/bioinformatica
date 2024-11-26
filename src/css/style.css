@@ -347,7 +347,8 @@ body {
 
 .footer nav ul li a:hover {
   font-weight: 700;
-  color: rgb(98, 70, 131);
+  color:rgb(98, 70, 131);
+  ;
 }
 
 .footer .social {
