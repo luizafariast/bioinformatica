@@ -1,0 +1,372 @@
+html {
+  font-size: 62.5%;
+}
+
+/*Corpo da página*/
+body {
+  display: grid;
+  /*Layout em grade*/
+  grid-template-areas: "header header header header"
+    "hero hero hero hero"
+    "hero hero hero hero"
+    "about about about about"
+    "projects projects projects projects"
+    "footer footer footer footer";
+  /* Define áreas nomeadas para os elementos */
+  grid-template-columns: repeat(4, 1fr);
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  /* Define o peso padrão da fonte */
+}
+
+/*header*/
+
+.header {
+  grid-area: header;
+  background-color: #fff;
+}
+
+.header .header-container {
+  display: flex;
+  /*estilização*/
+  padding: 20px 40px;
+  /*espaçamento*/
+  justify-content: space-between;
+  /*separação logo e menu*/
+  align-items: center;
+  /*alinha logo em relação ao menu*/
+  min-height: 75px;
+  /*para controlar a altura no mobile*/
+}
+
+.header h1 {
+  font-size: 30px;
+  font-weight: 700;
+  transition: 0.3s;
+  /*controla o tempo da transição de cor*/
+}
+
+.header a:hover h1 {
+  /* hover é acontecer x coisa quando o mouse passar em cima do h1*/
+  color: rgb(57, 48, 105);
+}
+
+.header nav ul {
+  list-style: none;
+  /* Remove os pontos */
+  padding: 0;
+  /* Remove o padding padrão */
+  margin: 0;
+  /* Remove a margem padrão */
+}
+
+.header nav ul li {
+  display: inline-block;
+  /* Faz os itens ficarem na mesma linha */
+}
+
+/*hero*/
+
+.hero {
+  grid-area: hero;
+  height: 70vh;
+  /* Define a altura do elemento como 89% da altura da viewport */
+  background-color: rgb(231, 203, 231);
+  /* insere a imagem como um conteúdo de linha*/
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  /* Define o contexto de posicionamento para elementos filhos posicionados absolutamente */
+}
+
+.hero h2 {
+  font-weight: 500;
+  text-transform: uppercase;
+  /* Converte o texto para maiúsculas */
+  font-size: 40px;
+}
+
+.hero .text-below-arrow {
+  position: absolute;
+  bottom: 50px;
+  /* Ajuste a distância do texto da seta */
+  font-size: 20px;
+  color: rgb(84, 44, 107);
+  /* Cor do texto */
+  text-align: center;
+  /* Alinha o texto ao centro */
+  font-weight: 600;
+}
+
+.hero::after {
+  content: '';
+  /* Cria um pseudo-elemento vazio */
+  position: absolute;
+  bottom: 150px;
+  width: 20px;
+  height: 20px;
+  background-image: url('../images/seta-para-baixo.png');
+  background-size: contain;
+  /* Ajusta a imagem para caber dentro do pseudo-elemento, mantendo sua proporção */
+  background-repeat: no-repeat;
+  animation: downarrow 0.6s infinite alternate ease-in-out;
+  /* Aplica uma animação chamada 'downarrow' com duração de 0.6s, que se repete infinitamente em alternância */
+}
+
+@-webkit-keyframes downarrow {
+
+  /*define a animação para navegatores que precisam de webkit*/
+  0% {
+    -webkit-transform: translateY(0);
+    opacity: 0.4;
+  }
+
+  100% {
+    -webkit-transform: translateY(0.4em);
+    opacity: 0.9;
+  }
+}
+
+/* Regra padrão */
+@keyframes downarrow {
+  0% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+
+  100% {
+    transform: translateY(0.4em);
+    opacity: 0.9;
+  }
+}
+
+/* Estilos responsivos para telas pequenas */
+@media(max-width:425px) {
+  .hero {
+    height: 68vh;
+  }
+
+  .hero h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+}
+
+/*about*/
+
+.about {
+  grid-area: about;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #fff;
+  max-width: var(--max-width-size);
+  margin: 0 auto;
+}
+
+.about .item {
+  padding: 20%; /* Adiciona espaçamento interno nas laterais */
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: justify;
+  background-color: rgb(98, 70, 131);
+}
+
+.about .item h3 {
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.about .item p {
+  font-weight: 400;
+  font-size: 18px;
+  margin: 30px 0;
+  text-align: justify;
+}
+
+.about .item .btn-know-more {
+  font-size: 16px;
+  align-self: flex-start;
+  /* Alinha o botão ao início do contêiner flexível */
+}
+
+.about .item .btn-know-more:hover {
+  font-weight: 700;
+}
+
+.about .image {
+  height: auto;
+  width: 80%;
+}
+
+.about .image.right {
+  background: url('../images/usuario1.jpeg') center center no-repeat;
+  background-size: cover;
+  /* Faz a imagem de fundo cobrir todo o contêiner */
+}
+
+.about .image.left {
+  background: url('../images/cientista2.jpeg') center center no-repeat;
+  background-size: cover;
+}
+
+.about .image.dev {
+  background: url('../images/desenvolvedor3.jpeg') center center no-repeat;
+  background-size: cover;
+  /* Faz a imagem de fundo cobrir todo o contêiner */
+}
+
+@media (max-width: 425px) {
+  .about {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* Espaçamento entre os itens */
+  }
+
+  .about .item {
+    text-align: center;
+    margin: 0 10px;
+    /* Espaçamento lateral para o texto */
+  }
+
+  .about .image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    /* Opcional: adiciona bordas arredondadas */
+  }
+
+  .about .image.right,
+  .about .image.left,
+  .about .image.dev {
+    width: 100%;
+    /* Garante que as imagens ocupem toda a largura disponível */
+    height: 350px;
+    /* Ajuste de altura para visualização clara */
+  }
+}
+
+
+/*projects*/
+
+.projects {
+  grid-area: projects;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.projects img {
+  width: 100%;
+  height: auto;
+  /* Garante que a imagem mantenha as proporções */
+  object-fit: cover;
+  /* Faz a imagem se ajustar ao espaço disponível sem distorcer */
+  transition: 0.3s;
+}
+
+.projects a:hover img {
+  opacity: 0.8;
+}
+
+@media (max-width: 758px) {
+  .projects {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    /* Ajusta a altura da linha conforme o conteúdo */
+    gap: 10px;
+    /* Menor espaçamento entre os itens */
+  }
+}
+
+@media (max-width: 425px) {
+  .projects {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    /* Ajusta a altura das linhas conforme o conteúdo */
+    gap: 10px;
+    /* Menor espaçamento entre os itens */
+  }
+
+  .projects img {
+    /* Ajusta a imagem para ficar proporcional à tela */
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
+/*footer*/
+
+.footer {
+  grid-area: footer;
+  display: flex;
+  background-color: rgb(231, 203, 231);
+  flex-direction: column;
+  text-align: center;
+  padding: 100px 0;
+  align-items: center;
+  /* Centraliza os itens dentro do footer */
+}
+
+.footer h4 {
+  font-weight: 600;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.footer nav {
+  margin: 50px 0;
+}
+
+.footer nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+.footer nav ul li {
+  margin: 0 20px;
+}
+
+.footer nav ul li a {
+  font-weight: 500;
+  font-size: 32px;
+  transition: 0.3s;
+}
+
+.footer nav ul li a:hover {
+  font-weight: 700;
+  color:rgb(98, 70, 131);
+  ;
+}
+
+.footer .social {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.footer .social i {
+  font-size: 32px;
+  margin: 0 20px;
+  transition: 0.3s;
+}
+
+.footer .social a {
+  margin: 0 20px;
+}
+
+.footer .social a:hover {
+  color: rgb(98, 70, 131);
+}
